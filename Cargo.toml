@@ -5,5 +5,7 @@ authors = ["Alex P. <alexeek@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
+actix-web = "2.0"
+actix-rt = "1.0"
 tokio = { version = "0.2", features = ["full"] }
 serenity = { git = "https://github.com/acdenisSK/serenity", branch = "await_next" }
