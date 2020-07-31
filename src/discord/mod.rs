@@ -1,5 +1,6 @@
 mod commands;
 mod util;
+
 use serenity::{
     async_trait,
     client::{Client, Context, EventHandler},
@@ -15,8 +16,11 @@ use serenity::{
         prelude::{Message, UserId},
     },
 };
+
 use std::collections::HashSet;
 use std::sync::Arc;
+
+use crate::settings::Settings;
 
 struct Handler;
 
@@ -62,8 +66,8 @@ async fn help_cmd(
 }
 
 pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
-    let token = std::env::var("DISCORD_TOKEN")?;
-    let http = Http::new_with_token(&token);
+    let cfg = Settings::new().unwrap();
+    let http = Http::new_with_token(&cfg.bot.token);
     let (owners, bot_id) = match http.get_current_application_info().await {
         Ok(info) => {
             let mut owners = HashSet::new();
@@ -79,7 +83,7 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
         .help(&HELP_CMD)
         .before(before_hook)
         .group(&commands::general::GENERAL_GROUP);
-    let mut client = Client::new(&token)
+    let mut client = Client::new(&cfg.bot.token)
         .event_handler(Handler)
         .framework(framework)
         .await?;
@@ -87,6 +91,7 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
     {
         let mut data = client.data.write().await;
         data.insert::<util::ClientShardManager>(Arc::clone(&client.shard_manager));
+        data.insert::<util::Settings>(Arc::clone(&Arc::new(cfg)));
     }
 
     client.start_autosharded().await.map_err(|e| e.into())
