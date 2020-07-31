@@ -79,7 +79,11 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     let framework = StandardFramework::new()
-        .configure(|c| c.prefix("s!").on_mention(Some(bot_id)).owners(owners))
+        .configure(|c| {
+            c.prefix(&cfg.bot.prefix)
+                .on_mention(Some(bot_id))
+                .owners(owners)
+        })
         .help(&HELP_CMD)
         .before(before_hook)
         .group(&commands::general::GENERAL_GROUP);
