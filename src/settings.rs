@@ -16,6 +16,7 @@ pub struct Http {
 pub struct Bot {
     pub prefix: String,
     pub token: String,
+    pub name: String,
 }
 
 impl Settings {
