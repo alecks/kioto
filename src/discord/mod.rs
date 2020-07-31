@@ -44,7 +44,7 @@ impl EventHandler for Handler {
 
 #[hook]
 async fn before_hook(_ctx: &Context, msg: &Message, cmd_name: &str) -> bool {
-    info!(
+    debug!(
         "Handling '{}' command for {}#{}",
         cmd_name, msg.author.name, msg.author.discriminator
     );
