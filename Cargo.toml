@@ -6,7 +6,4 @@ edition = "2018"
 
 [dependencies]
 tokio = { version = "0.2", features = ["full"] }
-
-[dependencies.serenity]
-git = "https://github.com/acdenisSK/serenity"
-branch = "await_next"
+serenity = { git = "https://github.com/acdenisSK/serenity", branch = "await_next" }
