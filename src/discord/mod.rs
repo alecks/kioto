@@ -18,7 +18,7 @@ use serenity::{
 };
 
 use crate::fatal;
-use crate::util::Settings;
+use crate::util::{DbPool, Settings};
 use log::{debug, error, info};
 use std::collections::HashSet;
 use std::sync::Arc;
@@ -66,7 +66,7 @@ async fn help_cmd(
     Ok(())
 }
 
-pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn init(pool: Arc<DbPool>) -> Result<(), Box<dyn std::error::Error>> {
     let cfg = Settings::get();
     let http = Http::new_with_token(&cfg.bot.token);
     let (owners, bot_id) = match http.get_current_application_info().await {
@@ -96,7 +96,7 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
     {
         let mut data = client.data.write().await;
         data.insert::<util::ClientShardManager>(Arc::clone(&client.shard_manager));
-        data.insert::<Settings>(Arc::new(cfg));
+        data.insert::<util::DbPool>(Arc::clone(&pool));
     }
 
     client.start_autosharded().await.map_err(|e| e.into())
