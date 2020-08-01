@@ -3,6 +3,9 @@ extern crate lazy_static;
 use actix_web::{middleware::Logger, App, HttpServer};
 use env_logger::Env;
 
+use diesel::prelude::*;
+use diesel::r2d2::{self, ConnectionManager};
+
 mod api;
 mod discord;
 mod routes;
@@ -14,12 +17,15 @@ async fn main() -> std::io::Result<()> {
     env_logger::from_env(Env::default().default_filter_or("info")).init();
 
     let cfg = Settings::get();
+    let manager = ConnectionManager::<PgConnection>::new(cfg.db.url);
+    let pool = r2d2::Pool::builder()
+        .build(manager)
+        .expect("Couldn't create pool");
 
     tokio::spawn(async { discord::init().await.unwrap() });
-    HttpServer::new(|| {
-        let cfg = Settings::get();
+    HttpServer::new(move || {
         App::new()
-            .data(cfg)
+            .data(pool.clone())
             .wrap(Logger::default())
             .configure(routes::api::config)
     })
