@@ -1,11 +1,12 @@
 #[macro_use]
 extern crate log;
-use actix_web::{middleware::Logger, App, HttpServer};
+use actix_web::{middleware::Logger, web, App, HttpServer};
 use env_logger::Env;
 use std::sync::Arc;
 use tokio;
 
 mod discord;
+mod routes;
 mod settings;
 use settings::Settings;
 
@@ -22,7 +23,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(captured_cfg.clone())
             .wrap(Logger::default())
-        //.service(web::scope("/api/v1").configure(routes::version_one::config))
+            .service(web::scope("/api").configure(routes::config))
     })
     .bind(&cfg.http.address)?
     .run()
