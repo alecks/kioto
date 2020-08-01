@@ -66,7 +66,7 @@ async fn help_cmd(
 }
 
 pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
-    let cfg = Settings::new().unwrap();
+    let cfg = Settings::get();
     let http = Http::new_with_token(&cfg.bot.token);
     let (owners, bot_id) = match http.get_current_application_info().await {
         Ok(info) => {
