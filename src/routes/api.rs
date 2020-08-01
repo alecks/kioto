@@ -2,5 +2,5 @@ use crate::api;
 use actix_web::web;
 
 pub fn config(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::scope("/api/v1"));
+    cfg.service(web::scope("/api/v1").service(api::test::get_test));
 }
