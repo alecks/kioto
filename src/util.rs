@@ -1,4 +1,5 @@
 use config::{Config, ConfigError, Environment, File};
+use log::error;
 use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 use std::{net::IpAddr, sync::Arc};
