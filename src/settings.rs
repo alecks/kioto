@@ -1,7 +1,7 @@
 use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
-use std::sync::Arc;
+use std::{net::IpAddr, sync::Arc};
 
 #[derive(Deserialize, Clone)]
 pub struct Settings {
@@ -12,7 +12,8 @@ pub struct Settings {
 
 #[derive(Deserialize, Clone)]
 pub struct Http {
-    pub address: String,
+    pub bind: IpAddr,
+    pub port: u16,
 }
 
 #[derive(Deserialize, Clone)]
