@@ -17,8 +17,9 @@ use serenity::{
     },
 };
 
+use crate::fatal;
 use crate::util::Settings;
-use log::{debug, info};
+use log::{debug, error, info};
 use std::collections::HashSet;
 use std::sync::Arc;
 
@@ -75,7 +76,7 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
 
             (owners, info.id)
         }
-        Err(why) => panic!("Couldn't get app info: {:?}", why),
+        Err(why) => fatal!("Couldn't get app info: {:?}", why),
     };
 
     let framework = StandardFramework::new()
