@@ -1,3 +1,5 @@
 # Kioto
 
-Calendars for Discord, supporting custom Deno scripts when events are reached, configuration via a web dashboard and a bunch more.
+Calendars for Discord, supporting scheduled Deno scripts, extensible creation online, and a bunch more.
+
+TODO: write docs
