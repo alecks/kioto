@@ -1,4 +1,5 @@
-use crate::discord::util::{ClientShardManager, Settings};
+use crate::discord::util::ClientShardManager;
+use crate::settings::Settings;
 use serenity::client::{bridge::gateway::ShardId, Context};
 use serenity::framework::standard::{
     macros::{command, group},
