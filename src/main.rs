@@ -7,8 +7,8 @@ use env_logger::Env;
 
 mod discord;
 mod routes;
-mod settings;
-use settings::Settings;
+mod util;
+use util::Settings;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
