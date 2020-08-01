@@ -10,7 +10,7 @@
     }
 
     meta: {
-        repo_url: https://github.com/fjah/calendarcord
-        name: calendarcord
+        repo_url: https://github.com/fjah/Kioto
+        name: Kioto
     }
 }
