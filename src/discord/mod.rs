@@ -17,10 +17,10 @@ use serenity::{
     },
 };
 
+use crate::util::Settings;
+use log::{debug, info};
 use std::collections::HashSet;
 use std::sync::Arc;
-
-use crate::util::Settings;
 
 struct Handler;
 
