@@ -34,7 +34,6 @@ pub struct Bot {
 #[derive(Deserialize, Clone)]
 pub struct Meta {
     pub name: String,
-    pub repo_url: String,
 }
 
 use std::{env, sync::RwLock};
