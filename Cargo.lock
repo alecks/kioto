@@ -489,21 +489,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "calendarcord"
-version = "0.1.0"
-dependencies = [
- "actix-rt",
- "actix-web",
- "config",
- "env_logger",
- "lazy_static",
- "log",
- "serde 1.0.114",
- "serenity",
- "tokio",
-]
-
-[[package]]
 name = "cc"
 version = "1.0.58"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1054,6 +1039,21 @@ checksum = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
 dependencies = [
  "winapi 0.2.8",
  "winapi-build",
+]
+
+[[package]]
+name = "kioto"
+version = "0.1.0"
+dependencies = [
+ "actix-rt",
+ "actix-web",
+ "config",
+ "env_logger",
+ "lazy_static",
+ "log",
+ "serde 1.0.114",
+ "serenity",
+ "tokio",
 ]
 
 [[package]]
