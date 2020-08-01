@@ -17,6 +17,7 @@ pub struct Settings {
     pub bot: Bot,
     pub http: Http,
     pub meta: Meta,
+    pub db: Db,
 }
 
 #[derive(Deserialize, Clone)]
@@ -34,6 +35,11 @@ pub struct Bot {
 #[derive(Deserialize, Clone)]
 pub struct Meta {
     pub name: String,
+}
+
+#[derive(Deserialize, Clone)]
+pub struct Db {
+    pub url: String,
 }
 
 use std::{env, sync::RwLock};
