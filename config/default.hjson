@@ -12,4 +12,8 @@
     meta: {
         name: kioto
     }
+
+    db: {
+        url: postgres://username:password@localhost/kioto
+    }
 }
