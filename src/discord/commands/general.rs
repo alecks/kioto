@@ -55,11 +55,12 @@ pub async fn info(ctx: &Context, msg: &Message) -> CommandResult {
     msg.channel_id
         .send_message(ctx, |m| {
             m.embed(|e| {
-                e.title(&cfg.bot.name)
-                    .description(
-                        "An open-source bot made with ❤️ by [Alex](https://github.com/fjah), et al.",
-                    )
-                    .url("https://github.com/fjah/calendarcord")
+                e.title(&cfg.meta.name)
+                    .description(format!(
+                        "An open-source bot made with ❤️ by [the community]({}/graphs/contributors).",
+                        cfg.meta.repo_url
+                    ))
+                    .url(&cfg.meta.repo_url)
             })
         })
         .await?;

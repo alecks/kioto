@@ -7,6 +7,7 @@ use std::sync::Arc;
 pub struct Settings {
     pub bot: Bot,
     pub http: Http,
+    pub meta: Meta,
 }
 
 #[derive(Deserialize)]
@@ -18,7 +19,12 @@ pub struct Http {
 pub struct Bot {
     pub prefix: String,
     pub token: String,
+}
+
+#[derive(Deserialize)]
+pub struct Meta {
     pub name: String,
+    pub repo_url: String,
 }
 
 impl Settings {
