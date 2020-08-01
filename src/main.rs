@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate lazy_static;
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use env_logger::Env;
 
