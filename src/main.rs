@@ -15,7 +15,7 @@ async fn main() -> std::io::Result<()> {
     let cfg = Settings::get();
 
     tokio::spawn(async { discord::init().await.unwrap() });
-    HttpServer::new(move || {
+    HttpServer::new(|| {
         let cfg = Settings::get();
         App::new()
             .data(cfg)
