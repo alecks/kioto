@@ -3,36 +3,59 @@ use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 use std::sync::Arc;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Settings {
     pub bot: Bot,
     pub http: Http,
     pub meta: Meta,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Http {
     pub address: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Bot {
     pub prefix: String,
     pub token: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct Meta {
     pub name: String,
     pub repo_url: String,
 }
 
+use std::{env, sync::RwLock};
+
+static CONFIG_FILE_DEFAULTS: &str = "config/default.hjson";
+static CONFIG_FILE: &str = "config/config.hjson";
+
+lazy_static! {
+    static ref SETTINGS: RwLock<Settings> = RwLock::new(match Settings::init() {
+        Ok(c) => c,
+        Err(e) => panic!("{}", e),
+    });
+}
+
 impl Settings {
-    pub fn new() -> Result<Self, ConfigError> {
+    fn init() -> Result<Self, ConfigError> {
         let mut s = Config::new();
-        s.merge(File::with_name("Config").required(false))?;
-        s.merge(Environment::with_prefix("ccord"))?;
+
+        s.merge(File::with_name(&Self::get_config_defaults_location()))?;
+        s.merge(File::with_name(CONFIG_FILE).required(false))?;
+        s.merge(Environment::with_prefix("CCORD").separator("__"))?;
+
         s.try_into()
+    }
+
+    pub fn get() -> Self {
+        SETTINGS.read().unwrap().to_owned()
+    }
+
+    pub fn get_config_defaults_location() -> String {
+        env::var("CCORD_CONFIG").unwrap_or_else(|_| CONFIG_FILE_DEFAULTS.to_string())
     }
 }
 
