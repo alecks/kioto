@@ -4,6 +4,9 @@ use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 use std::{net::IpAddr, sync::Arc};
 
+use diesel::prelude::*;
+use diesel::r2d2::{self, ConnectionManager};
+
 #[macro_export]
 macro_rules! fatal {
     ( $( $x:expr ),* ) => {{
@@ -11,6 +14,8 @@ macro_rules! fatal {
         std::process::exit(1);
     }};
 }
+
+pub type DbPool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
 #[derive(Deserialize, Clone)]
 pub struct Settings {
