@@ -4,6 +4,7 @@ use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 use std::{net::IpAddr, sync::Arc};
 
+#[macro_export]
 macro_rules! fatal {
     ( $( $x:expr ),* ) => {{
         error!($($x),*);
