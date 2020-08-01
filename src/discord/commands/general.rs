@@ -20,7 +20,7 @@ pub async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
         .read()
         .await
         .get::<ClientShardManager>()
-        .ok_or_else(|| "Couldn't get shard manager")?
+        .ok_or("Couldn't get shard manager")?
         .clone();
     let shard_latency = shard_manager
         .lock()
@@ -29,9 +29,9 @@ pub async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
         .lock()
         .await
         .get(&ShardId(ctx.shard_id))
-        .ok_or_else(|| "Couldn't get shard")?
+        .ok_or("Couldn't get shard")?
         .latency
-        .ok_or_else(|| "Couldn't get shard latency")?
+        .ok_or("Couldn't get shard latency")?
         .as_millis();
 
     msg.channel_id
