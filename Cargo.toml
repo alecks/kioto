@@ -17,3 +17,4 @@ serenity = { git = "https://github.com/acdenisSK/serenity", branch = "await_next
 lazy_static = "1.4.0"
 diesel = { version = "1.4.4", features = ["postgres"] }
 uuid = { version = "0.8", features = ["serde", "v4"] }
+r2d2 = "0.8.9"
