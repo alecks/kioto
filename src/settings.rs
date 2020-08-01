@@ -1,5 +1,7 @@
 use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
+use serenity::prelude::TypeMapKey;
+use std::sync::Arc;
 
 #[derive(Deserialize)]
 pub struct Settings {
@@ -26,4 +28,8 @@ impl Settings {
         s.merge(Environment::with_prefix("ccord"))?;
         s.try_into()
     }
+}
+
+impl TypeMapKey for Settings {
+    type Value = Arc<Settings>;
 }

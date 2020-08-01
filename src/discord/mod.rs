@@ -95,7 +95,7 @@ pub async fn init() -> Result<(), Box<dyn std::error::Error>> {
     {
         let mut data = client.data.write().await;
         data.insert::<util::ClientShardManager>(Arc::clone(&client.shard_manager));
-        data.insert::<util::Settings>(Arc::clone(&Arc::new(cfg)));
+        data.insert::<Settings>(Arc::clone(&Arc::new(cfg)));
     }
 
     client.start_autosharded().await.map_err(|e| e.into())
