@@ -1,8 +1,9 @@
 #[macro_use]
 extern crate log;
+#[macro_use]
+extern crate lazy_static;
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use env_logger::Env;
-use std::sync::Arc;
 use tokio;
 
 mod discord;
@@ -14,18 +15,17 @@ use settings::Settings;
 async fn main() -> std::io::Result<()> {
     env_logger::from_env(Env::default().default_filter_or("info")).init();
 
-    // FIXME: the way cfg is being passed around is horrible, im tired thanks
-    let cfg = Arc::new(Settings::new().expect("Couldn't load config"));
+    let cfg = Settings::get();
 
     tokio::spawn(async { discord::init().await.unwrap() });
-    let captured_cfg = cfg.clone();
     HttpServer::new(move || {
+        let cfg = Settings::get();
         App::new()
-            .data(captured_cfg.clone())
+            .data(cfg)
             .wrap(Logger::default())
             .service(web::scope("/api").configure(routes::config))
     })
-    .bind(&cfg.http.address)?
+    .bind((cfg.http.bind, cfg.http.port))?
     .run()
     .await
 }
