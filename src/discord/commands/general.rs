@@ -45,6 +45,9 @@ pub async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
     Ok(())
 }
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+const REPOSITORY: &'static str = env!("CARGO_PKG_REPOSITORY");
+
 #[command]
 #[description = "Displays bot information."]
 #[aliases(about, meta)]
@@ -55,12 +58,12 @@ pub async fn info(ctx: &Context, msg: &Message) -> CommandResult {
     msg.channel_id
         .send_message(ctx, |m| {
             m.embed(|e| {
-                e.title(&cfg.meta.name)
+                e.title(format!("{} v{}", cfg.meta.name, VERSION))
                     .description(format!(
                         "An open-source bot made with ❤️ by [the community]({}/graphs/contributors).",
-                        cfg.meta.repo_url
+                        REPOSITORY
                     ))
-                    .url(&cfg.meta.repo_url)
+                    .url(REPOSITORY)
             })
         })
         .await?;
