@@ -496,6 +496,7 @@ dependencies = [
  "actix-web",
  "config",
  "env_logger",
+ "lazy_static",
  "log",
  "serde 1.0.114",
  "serenity",
