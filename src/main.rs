@@ -3,9 +3,9 @@ extern crate lazy_static;
 use actix_web::{middleware::Logger, App, HttpServer};
 use env_logger::Env;
 
+mod api;
 mod discord;
 mod routes;
-use routes::api;
 mod util;
 use util::Settings;
 
@@ -21,7 +21,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(cfg)
             .wrap(Logger::default())
-            .configure(api::config)
+            .configure(routes::api::config)
     })
     .bind((cfg.http.bind, cfg.http.port))?
     .run()
