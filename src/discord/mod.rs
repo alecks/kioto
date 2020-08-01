@@ -20,7 +20,7 @@ use serenity::{
 use std::collections::HashSet;
 use std::sync::Arc;
 
-use crate::settings::Settings;
+use crate::util::Settings;
 
 struct Handler;
 
