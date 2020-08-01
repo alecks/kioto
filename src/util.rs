@@ -3,6 +3,13 @@ use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 use std::{net::IpAddr, sync::Arc};
 
+macro_rules! fatal {
+    ( $( $x:expr ),* ) => {{
+        error!($($x),*);
+        std::process::exit(1);
+    }};
+}
+
 #[derive(Deserialize, Clone)]
 pub struct Settings {
     pub bot: Bot,
@@ -36,7 +43,7 @@ static CONFIG_FILE: &str = "config/config.hjson";
 lazy_static! {
     static ref SETTINGS: RwLock<Settings> = RwLock::new(match Settings::init() {
         Ok(c) => c,
-        Err(e) => panic!("{}", e),
+        Err(e) => fatal!("{}", e),
     });
 }
 
