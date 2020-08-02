@@ -35,7 +35,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(pool.clone())
             .wrap(Logger::default())
-            .configure(routes::api::config)
+            .configure(routes::config)
     })
     .bind((cfg.http.bind, cfg.http.port))?
     .run()
