@@ -17,20 +17,7 @@
         <div class="container" id="features">
           <h1>Features</h1>
           <div class="row">
-            <Card name="YAML" small="Interfaces/Workflows" link="#docs"
-              >Use YAML to build extensive bot interfaces and workflows.
-              Integrate restrictionless Go code.</Card
-            >
-
-            <Card name="Markdown" small="Interfaces/Documentation" link="#docs"
-              >Create web documentation with Markdown and integrate it into
-              Discord embeds.</Card
-            >
-
-            <Card name="Redis" small="Database" link="#docs"
-              >Use Redis as an exceedingly fast key/value store out of the box.
-              Store complex data types with JSON.</Card
-            >
+            <Card name="TODO" small="TODO" link="#">TODO</Card>
           </div>
         </div>
       </div>
