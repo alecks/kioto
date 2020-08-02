@@ -1,6 +1,7 @@
 <template>
   <div id="card" class="col-md-4">
     <div class="box-shadow card mb-4 bg-light">
+      <img class="card-img-top" :src="image" />
       <div class="card-body">
         <h5 class="card-title">
           <a :href="link">{{ name }}</a>
@@ -20,6 +21,7 @@ export default {
   props: {
     name: String,
     small: String,
+    image: String,
     link: String
   }
 };
