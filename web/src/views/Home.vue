@@ -7,9 +7,7 @@
           <p class="lead text-muted">
             Extensible calendars and schedules for Discord. That's it.
           </p>
-          <a href="https://discord.com/x" class="btn btn-primary text-white"
-            >Invite Bot</a
-          >
+          <a href="https://discord.com/x" class="btn btn-primary text-white">Invite Bot</a>
         </div>
       </section>
 
