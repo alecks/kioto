@@ -49,9 +49,9 @@ pub struct Db {
     pub url: String,
 }
 
-static CONFIG_FILE_DEFAULTS: &str = "config/default.hjson";
-static CONFIG_FILE: &str = "config/config.hjson";
-static ENV_PREFIX: &str = "KIOTO";
+const CONFIG_FILE_DEFAULTS: &str = "config/default.hjson";
+const CONFIG_FILE: &str = "config/config.hjson";
+const ENV_PREFIX: &str = "KIOTO";
 
 lazy_static! {
     static ref SETTINGS: RwLock<Settings> = RwLock::new(match Settings::init() {

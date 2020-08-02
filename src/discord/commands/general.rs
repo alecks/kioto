@@ -45,8 +45,8 @@ pub async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
     Ok(())
 }
 
-static VERSION: &str = env!("CARGO_PKG_VERSION");
-static REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
 
 #[command]
 #[description = "Displays bot information."]
