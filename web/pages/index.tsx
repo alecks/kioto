@@ -18,7 +18,7 @@ export default function Home() {
                 </p>
 
                 <div className={styles.grid}>
-                    <a href="#" className={styles.card}>
+                    <a href="https://docs.owo.gg" className={styles.card}>
                         <h3>Documentation &rarr;</h3>
                         <p>Find out how to use Kioto to its max, or even self-host it.</p>
                     </a>
@@ -29,7 +29,7 @@ export default function Home() {
                     </a>
 
                     <a
-                        href="#"
+                        href="https://github.com/fjah/kioto/tree/master/examples"
                         className={styles.card}
                     >
                         <h3>Examples &rarr;</h3>
@@ -37,7 +37,7 @@ export default function Home() {
                     </a>
 
                     <a
-                        href="#"
+                        href="https://github.com/fjah/kioto"
                         className={styles.card}
                     >
                         <h3>Source &rarr;</h3>
