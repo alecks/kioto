@@ -54,7 +54,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Hosted by <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+                    Hosted by <img src="/vercel.svg" alt="Vercel logo" className={styles.logo} />
                 </a>
             </footer>
         </div>
