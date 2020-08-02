@@ -2,6 +2,8 @@ use config::{Config, ConfigError, Environment, File};
 use log::error;
 use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
+
+use std::{env, sync::RwLock};
 use std::{net::IpAddr, sync::Arc};
 
 use diesel::prelude::*;
@@ -46,8 +48,6 @@ pub struct Meta {
 pub struct Db {
     pub url: String,
 }
-
-use std::{env, sync::RwLock};
 
 static CONFIG_FILE_DEFAULTS: &str = "config/default.hjson";
 static CONFIG_FILE: &str = "config/config.hjson";
