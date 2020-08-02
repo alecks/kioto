@@ -65,7 +65,7 @@ impl Settings {
 
         s.merge(File::with_name(&Self::get_config_defaults_location()))?;
         s.merge(File::with_name(CONFIG_FILE).required(false))?;
-        s.merge(Environment::with_prefix("CCORD").separator("__"))?;
+        s.merge(Environment::with_prefix("KIOTO").separator("__"))?;
 
         s.try_into()
     }
