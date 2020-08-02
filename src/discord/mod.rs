@@ -97,6 +97,7 @@ pub async fn init(pool: Arc<DbPool>) -> Result<(), Box<dyn std::error::Error>> {
         let mut data = client.data.write().await;
         data.insert::<util::ClientShardManager>(Arc::clone(&client.shard_manager));
         data.insert::<util::DbPool>(Arc::clone(&pool));
+        data.insert::<Settings>(Arc::new(cfg));
     }
 
     client.start_autosharded().await.map_err(|e| e.into())
