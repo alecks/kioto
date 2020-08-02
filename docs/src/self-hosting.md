@@ -1,6 +1,8 @@
 # Self-hosting
 
-You're able to host your own instance of Kioto assuming that you have the resources. Really though, Kioto is _very_ lightweight; it shouldn't be too much of a hassle to host.
+You're able to host your own instance of Kioto assuming that you have the resources. Really though, Kioto is _very_ lightweight; it shouldn't be too much of a hassle to host. For reference, this is an example of a working instance:
+
+![Successful output](img/successful-output.png)
 
 > Note that console commands aren't prefixed with `$`, etc. This is to allow you to easily copy them.
 
