@@ -64,7 +64,7 @@ impl Settings {
     fn init() -> Result<Self, ConfigError> {
         let mut s = Config::new();
 
-        s.merge(File::with_name(&Self::get_config_defaults_location()))?;
+        s.merge(File::with_name(&Self::get_defaults_location()))?;
         s.merge(File::with_name(CONFIG_FILE).required(false))?;
         s.merge(Environment::with_prefix(ENV_PREFIX).separator("__"))?;
 
@@ -75,7 +75,7 @@ impl Settings {
         SETTINGS.read().unwrap().to_owned()
     }
 
-    pub fn get_config_defaults_location() -> String {
+    fn get_defaults_location() -> String {
         env::var(format!("{}_CONFIG", ENV_PREFIX))
             .unwrap_or_else(|_| CONFIG_FILE_DEFAULTS.to_string())
     }
