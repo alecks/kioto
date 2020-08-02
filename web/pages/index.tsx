@@ -47,7 +47,9 @@ export default function Home() {
             </main>
 
             <footer className={styles.footer}>
-                BSD 3 Clause &copy; 2020&nbsp;<span className={styles.separator}>
+                &copy; 2020&nbsp;<span className={styles.separator}>
+                    &bull;
+                </span>&nbsp;BSD 3-Clause&nbsp;<span className={styles.separator}>
                     &bull;
                 </span>&nbsp;<a
                     href="https://vercel.com"
