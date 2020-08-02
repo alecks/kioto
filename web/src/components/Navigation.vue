@@ -22,9 +22,7 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link btn btn-primary text-white" to="/login"
-            >Login</router-link
-          >
+          <router-link class="nav-link btn btn-primary text-white" to="/login">Login</router-link>
         </li>
       </ul>
     </div>
