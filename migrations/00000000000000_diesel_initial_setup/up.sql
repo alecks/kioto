@@ -21,7 +21,6 @@ BEGIN
     EXECUTE format('CREATE TRIGGER set_updated_at BEFORE UPDATE ON %s
                     FOR EACH ROW EXECUTE PROCEDURE diesel_set_updated_at()', _tbl);
 END;
-$$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION diesel_set_updated_at() RETURNS trigger AS $$
 BEGIN
@@ -33,4 +32,3 @@ BEGIN
     END IF;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
