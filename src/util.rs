@@ -51,6 +51,7 @@ use std::{env, sync::RwLock};
 
 static CONFIG_FILE_DEFAULTS: &str = "config/default.hjson";
 static CONFIG_FILE: &str = "config/config.hjson";
+static ENV_PREFIX: &str = "KIOTO";
 
 lazy_static! {
     static ref SETTINGS: RwLock<Settings> = RwLock::new(match Settings::init() {
@@ -65,7 +66,7 @@ impl Settings {
 
         s.merge(File::with_name(&Self::get_config_defaults_location()))?;
         s.merge(File::with_name(CONFIG_FILE).required(false))?;
-        s.merge(Environment::with_prefix("CCORD").separator("__"))?;
+        s.merge(Environment::with_prefix(ENV_PREFIX).separator("__"))?;
 
         s.try_into()
     }
@@ -75,7 +76,8 @@ impl Settings {
     }
 
     pub fn get_config_defaults_location() -> String {
-        env::var("CCORD_CONFIG").unwrap_or_else(|_| CONFIG_FILE_DEFAULTS.to_string())
+        env::var(format!("{}_CONFIG", ENV_PREFIX))
+            .unwrap_or_else(|_| CONFIG_FILE_DEFAULTS.to_string())
     }
 }
 
