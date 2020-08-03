@@ -73,6 +73,7 @@ dependencies = [
  "pin-project",
  "rand",
  "regex",
+ "ring",
  "serde 1.0.114",
  "serde_json",
  "serde_urlencoded",
@@ -147,6 +148,22 @@ checksum = "d3e4fc95dfa7e24171b2d0bb46b85f8ab0e8499e4e3caec691fc4ea65c287564"
 dependencies = [
  "futures-util",
  "pin-project",
+]
+
+[[package]]
+name = "actix-session"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ca833a08799c95281204f9cc76223da4d12d2caa03de24362b3e268c60da328c"
+dependencies = [
+ "actix-service",
+ "actix-web",
+ "bytes",
+ "derive_more",
+ "futures",
+ "serde 1.0.114",
+ "serde_json",
+ "time",
 ]
 
 [[package]]
@@ -1104,6 +1121,7 @@ name = "kioto"
 version = "0.1.0"
 dependencies = [
  "actix-rt",
+ "actix-session",
  "actix-web",
  "config",
  "diesel",
