@@ -37,6 +37,8 @@ pub struct Http {
 pub struct Bot {
     pub prefix: String,
     pub token: String,
+    pub client_id: String,
+    pub client_secret: String,
 }
 
 #[derive(Deserialize, Clone)]

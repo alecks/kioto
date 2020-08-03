@@ -7,6 +7,8 @@
     bot: {
         token: your.bot.token
         prefix: "["
+        client_id: 000000000000000000
+        client_secret: yourClientSecret
     }
 
     meta: {
