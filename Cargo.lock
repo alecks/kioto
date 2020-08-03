@@ -1134,6 +1134,7 @@ dependencies = [
  "serde 1.0.114",
  "serenity",
  "tokio",
+ "url",
  "uuid",
 ]
 
