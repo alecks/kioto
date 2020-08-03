@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate lazy_static;
+use actix_session::CookieSession;
 use actix_web::{middleware::Logger, App, HttpServer};
 use env_logger::Env;
 
@@ -61,6 +62,7 @@ async fn main() -> std::io::Result<()> {
                 oauth: oauth_client,
             })
             .wrap(Logger::default())
+            .wrap(CookieSession::signed(&[0; 32]).secure(false))
             .configure(routes::config)
     })
     .bind((cfg.http.bind, cfg.http.port))?
