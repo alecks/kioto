@@ -3,6 +3,8 @@ use log::error;
 use serde::Deserialize;
 use serenity::prelude::TypeMapKey;
 
+use oauth2::basic::BasicClient;
+
 use std::{env, sync::RwLock};
 use std::{net::IpAddr, sync::Arc};
 
@@ -86,4 +88,9 @@ impl Settings {
 
 impl TypeMapKey for Settings {
     type Value = Arc<Settings>;
+}
+
+pub struct AppState {
+    pub oauth: BasicClient,
+    pub db: DbPool,
 }
