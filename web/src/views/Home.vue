@@ -20,19 +20,15 @@
         </div>
       </div>
     </main>
-
-    <Footer v-bind:copyright="copyright" />
   </div>
 </template>
 
 <script>
-import Footer from "@/components/Footer.vue";
 import Card from "@/components/Card.vue";
 
 export default {
   name: "Home",
   components: {
-    Footer,
     Card
   }
 };
