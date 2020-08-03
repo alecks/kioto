@@ -1351,7 +1351,7 @@ dependencies = [
  "config",
  "diesel",
  "env_logger",
- "http 0.2.1",
+ "http 0.1.21",
  "lazy_static",
  "log",
  "oauth2",
