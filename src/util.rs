@@ -92,5 +92,4 @@ impl TypeMapKey for Settings {
 
 pub struct AppState {
     pub oauth: BasicClient,
-    pub db: DbPool,
 }
