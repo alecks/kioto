@@ -1132,6 +1132,7 @@ dependencies = [
  "oauth2",
  "r2d2",
  "serde 1.0.114",
+ "serde_json",
  "serenity",
  "tokio",
  "url",
