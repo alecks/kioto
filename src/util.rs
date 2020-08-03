@@ -31,6 +31,7 @@ pub struct Settings {
 pub struct Http {
     pub bind: IpAddr,
     pub port: u16,
+    pub url: String,
 }
 
 #[derive(Deserialize, Clone)]
